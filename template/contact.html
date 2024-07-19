@@ -178,9 +178,10 @@
                                   <!-- .contact-form -->
                                   <div class="contact-form">
                                     
-                                      <form id="contact-form" class="validate-form" method="post" action="https://themes.pixelwars.org/editor-html/send-mail.php">
-                                        
-                                        <!-- enter mail subject here -->
+                                      <form  method="post" action="{% url 'contact-page' %}">
+                                        {% csrf_token %}
+                                        {{ form.as_p }}
+                                        <!-- enter mail subject here
                                         <input type="hidden" name="subject" id="subject" value="You have a new message from Editor!">
                                         
                                         <p>
@@ -191,19 +192,19 @@
                                         <p>
                                           <label for="email">EMAIL</label>
                                           <input type="text" name="email" id="email" class="required email">
-                                        </p>
+                                        </p> -->
                                         
-                                        <p class="antispam">Leave this empty if you are a human :
-											<br /><input name="url" />
-                                        </p>
+                                        <!-- <p class="antispam">Leave this empty if you are a human :
+											<br /><input name="content" />
+                                        </p> -->
 
-                                        <p>
+                                        <!-- <p>
                                           <label for="message">MESSAGE</label>
-                                          <textarea name="message" id="message" class="required"></textarea>
-                                        </p>
+                                          <textarea name="content" id="message" class="required"></textarea>
+                                        </p> -->
                                        
                                         <p>
-                                          <button class="submit button"><span class="submit-label">Submit</span><span class="submit-status"></span></button>
+                                          <button  type="submit" >Submit</button>
                                         </p>
                                         
                                       </form>
