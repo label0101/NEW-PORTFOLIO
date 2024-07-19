@@ -1,12 +1,13 @@
 from django.shortcuts import render
-from .models import About , Books,Contact,Index,Portfolio,Gallery
+from .models import About , Books, Contact,Index,Portfolio,Gallery
 from django.contrib import messages
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 from hitcount.views import HitCountDetailView
 from django.core.paginator import Paginator
-
 import math
+
+
 def index_view(request):
  return render(request,'index.html')
 
