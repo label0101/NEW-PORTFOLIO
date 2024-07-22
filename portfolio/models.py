@@ -3,6 +3,7 @@ from ckeditor.fields import RichTextField
 from hitcount.models import HitCountMixin,HitCount
 from django.contrib.contenttypes.fields import GenericRelation
 from django.utils.text import slugify
+from ckeditor.fields import RichTextField
 
 
 class Contact(models.Model):
@@ -12,30 +13,31 @@ class Contact(models.Model):
 
     def __str__(self):
         return f"{self.name} {self.email}"
-    
+
+class Portfolio(models.Model):
+    title = models.CharField(max_length=50)
+    image = models.ImageField(upload_to='Images/portfolio')
+    description = models.CharField(max_length=50)
+    created_date = models.DateTimeField(auto_now=True)
+
+class Category(models.Model):
+    name = models.CharField(max_length=50)
 
 
-# class About(models.Model):
-#     title = models.CharField(max_length=100)
-#     description = models.TextField()
+class Blog(models.Model):
+    title = models.CharField(max_length=50)
+    image = models.ImageField(upload_to='Images/blog')
+    created_date = models.DateTimeField(auto_now=True)
+    content = RichTextField()
 
-# class Books(models.Model):
-#     title = models.CharField(max_length=100)
-#     author = models.CharField(max_length=100)
+    category = models.ForeignKey(Category,on_delete=models.CASCADE)
 
-# class Contact(models.Model):
-#     name = models.CharField(max_length=100)
-#     email = models.EmailField()
-
-# class Index(models.Model):
-#     title = models.CharField(max_length=100)
-#     content = models.TextField()
-
-# class Portfolio(models.Model):
-#     project_name = models.CharField(max_length=100)
-#     description = models.TextField()
+class Comment(models.Model):
+    full_name = models.CharField(max_length=50)
+    created_date = models.DateTimeField(auto_now=True)
+    email = models.EmailField(max_length=100)
+    message = models.TextField()
+    blog = models.ForeignKey(Blog,on_delete=models.CASCADE)
 
 
-# class Gallery(models.Model):
-#     project_name = models.CharField(max_length=100)
-#     description = models.TextField()
+# Gallery Books
