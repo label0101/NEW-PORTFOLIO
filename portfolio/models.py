@@ -5,7 +5,6 @@ from django.contrib.contenttypes.fields import GenericRelation
 from django.utils.text import slugify
 from ckeditor.fields import RichTextField
 
-
 class Contact(models.Model):
     name = models.CharField(max_length=50)
     email = models.EmailField(max_length=50)
@@ -38,6 +37,5 @@ class Comment(models.Model):
     email = models.EmailField(max_length=100)
     message = models.TextField()
     blog = models.ForeignKey(Blog,on_delete=models.CASCADE)
-
 
 # Gallery Books
