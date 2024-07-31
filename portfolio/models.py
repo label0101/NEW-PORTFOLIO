@@ -13,11 +13,17 @@ class Contact(models.Model):
     def __str__(self):
         return f"{self.name} {self.email}"
 
+class PortfolioCategory(models.Model):
+    name = models.CharField(max_length=50)
+    def __str__(self):
+        return f"{self.name}"
+
 class Portfolio(models.Model):
     title = models.CharField(max_length=50)
     image = models.ImageField(upload_to='Images/portfolio')
     description = models.CharField(max_length=50)
     created_date = models.DateTimeField(auto_now=True)
+    category = models.ForeignKey(PortfolioCategory,on_delete=models.CASCADE)
 
 class Category(models.Model):
     name = models.CharField(max_length=50)
@@ -39,3 +45,19 @@ class Comment(models.Model):
     blog = models.ForeignKey(Blog,on_delete=models.CASCADE)
 
 # Gallery Books
+
+class Gallery(models.Model):
+    title = models.CharField(max_length=50)
+    image = models.ImageField(upload_to='Images/gallery') 
+    created_date = models.DateTimeField(auto_now=True)
+
+
+class Book(models.Model):
+    cover = models.ImageField(upload_to='Images/books')
+    spine = models.ImageField(upload_to='Images/books')
+    title = models.CharField(max_length=100)
+    author = models.CharField(max_length=100)
+    description = models.TextField()
+    pages = models.IntegerField()
+    publication_date = models.DateField()
+    publisher = models.CharField(max_length=255)

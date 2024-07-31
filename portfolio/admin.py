@@ -1,9 +1,9 @@
 from django.contrib import admin
-from .models import Contact,Portfolio, Blog, Category,Comment
+from .models import Contact,Portfolio, Blog, Category,Comment,Gallery,Book,PortfolioCategory
 from django.utils.html import format_html
 
 # Register your models here.
-admin.site.register((Comment,Category))
+admin.site.register((Comment,Category,PortfolioCategory))
 
 @admin.register(Contact)
 class ContactAdmin(admin.ModelAdmin):
@@ -15,8 +15,30 @@ class PortfolioAdmin(admin.ModelAdmin):
 
 @admin.register(Blog)
 class BlogAdmin(admin.ModelAdmin):
-    list_display = ('title','category_name')
+    list_display = ('img','title','category_name')
+    def img(self, obj):
+         return format_html('<img width="100" height="100" src="{}"style="border-radius: 50%;" />'.format(obj.image.url))
 
     def category_name(self, obj):
         return obj.category.name
     #rasmni ko'rinadigan qilasilar
+
+
+@admin.register(Gallery)
+class GalleryAdmin(admin.ModelAdmin):
+    list_display = ('img', 'title', 'created_date')
+    readonly_fields = ['id']
+
+    def img(self, obj):
+        return format_html(
+            '<img width="100" height="100" src="{}" style="border-radius: 50%;" />',
+            obj.image.url
+        )
+
+@admin.register(Book)
+class BooksAdmin(admin.ModelAdmin):
+    list_display = ('img','title','author','description','description','pages','publication_date','publisher')
+    readonly_fields = ['id']
+    def img(self, obj):
+         return format_html('<img width="100" height="100" src="{}" />'.format(obj.cover.url))
+  
