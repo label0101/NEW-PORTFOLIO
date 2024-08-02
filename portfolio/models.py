@@ -33,12 +33,16 @@ class Category(models.Model):
 
 
 class Blog(models.Model):
-    title = models.CharField(max_length=50)
+    title = models.CharField(max_length=150)
     image = models.ImageField(upload_to='Images/blog')
     created_date = models.DateTimeField(auto_now=True)
     content = RichTextField()
 
     category = models.ForeignKey(Category,on_delete=models.CASCADE)
+
+    def __str__(self) -> str:
+        title = self.title[:10]
+        return f"{title}"
 
 class Comment(models.Model):
     full_name = models.CharField(max_length=50)
@@ -46,6 +50,9 @@ class Comment(models.Model):
     email = models.EmailField(max_length=100)
     message = models.TextField()
     blog = models.ForeignKey(Blog,on_delete=models.CASCADE)
+    
+    def __str__(self) -> str:
+        return f"{self.message} by {self.full_name}"
 
 # Gallery Books
 
