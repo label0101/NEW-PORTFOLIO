@@ -28,6 +28,9 @@ class Portfolio(models.Model):
 class Category(models.Model):
     name = models.CharField(max_length=50)
 
+    def __str__(self) -> str:
+        return f"{self.name}"
+
 
 class Blog(models.Model):
     title = models.CharField(max_length=50)

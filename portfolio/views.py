@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Contact,Portfolio,PortfolioCategory
+from .models import Category, Contact,Portfolio,PortfolioCategory,Blog
 from django.contrib import messages
 from django.http import HttpResponseRedirect
 from django.urls import reverse
@@ -42,8 +42,7 @@ def books_view(request):
  return render(request,'books.html')
 
 
-# def portfolio_view(request):
-#  return render(request, 'portfolio.html')
+
 class PortfolioListView(ListView):
     model = Portfolio
     # paginate_by = 100  # if pagination is desired
@@ -59,5 +58,16 @@ def gallery_view(request):
  return render(request, 'gallery.html')
 
 
-def blog_view(request):
- return render(request, 'blog.html')
+# def blog_view(request):
+#  return render(request, 'blog.html')
+
+class BlogListView(ListView):
+    model = Blog
+    # paginate_by = 100  # if pagination is desired
+    context_object_name = 'blogs'
+    template_name = "blog.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["categories"] = Category.objects.all()
+        return context
