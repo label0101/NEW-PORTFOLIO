@@ -1,9 +1,9 @@
 from django.contrib import admin
-from .models import Contact,Portfolio, Blog, Category,Comment,Gallery,Book,PortfolioCategory
+from .models import Contact,Portfolio, Blog, Category,Comment,Gallery,Book,PortfolioCategory,GalleryCategory
 from django.utils.html import format_html
 
 # Register your models here.
-admin.site.register((Comment,Category,PortfolioCategory))
+admin.site.register((Comment,Category,PortfolioCategory,GalleryCategory))
 
 @admin.register(Contact)
 class ContactAdmin(admin.ModelAdmin):

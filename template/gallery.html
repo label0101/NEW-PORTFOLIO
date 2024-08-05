@@ -3,245 +3,40 @@
 {% block title %} Portfolio {% endblock title %}
 {% block content %}
 
-
-
-
-        
-        
         <!-- site-main -->
         <div id="main" class="site-main">
-        
-        
-        
-        	            
             <!-- primary -->
         	<div id="primary" class="content-area">
-            	
                 <!-- site-content -->
                 <div id="content" class="site-content" role="main">
-                
-                
-                
-                
-                	
-                    
-                    <!-- InstanceBeginEditable name="FeaturedContent" -->
-					
-                    
-					<!-- InstanceEndEditable -->
-                	
-                    
-                    
                     <!-- layout-medium -->
                 	<div class="layout-medium">
-                    
-                    
-                    
-						<!-- InstanceBeginEditable name="LayoutMediumContent" -->
-                        
-                        
-                        <!-- entry-header -->
-                        <header class="entry-header">
-                            
-                        	<h1 class="entry-title">GALLERY</h1>
-                          
+                        <header class="entry-header">       
+                        	<h1 class="entry-title">GALLERY</h1>  
                         </header>
-                        <!-- entry-header -->
-                        
-                        
-                        <!-- .media-grid-wrap -->
                         <div class="media-grid-wrap">
-                        
-                        
                             <!-- GALLERY -->
                             <div class="r-gallery masonry media-grid" data-layout="masonry" data-item-width="420">
-                              
-                              
-                              <!-- gallery-item -->  
-                              <div class="media-cell hentry">
-                                
+                              {% for gallery in gallery %}
+                              <div class="media-cell hentry">                         
                                 <div class="media-box">
-                                    <img src="{% static 'images/gallery-images/albums/1.jpg'%}" alt="gallery-post">
+                                    <img src="{{ gallery.image.url }}" alt="gallery-post">
                                     <div class="mask">
                                         <div class="media-cell-desc">
-                                            <h3>Outdoor Adventures</h3>
-                                            <h4>17 July 2014</h4>
+                                            <h3>{{ gallery.title }}</h3>
+                                            <h4>{{ gallery.created_date }}</h4>
+                                            
                                         </div>
                                     </div>
-                                    <a href="gallery-single.html"></a>
+                                    <a href="{% url 'gallery-single-page' gallery.pk %}"></a>
                                 </div>
-                                
                               </div>
-                              <!-- gallery-item -->
-                              
-                               <!-- gallery-item -->  
-                              <div class="media-cell hentry">
-                                
-                                <div class="media-box">
-                                    <img src="{% static 'images/gallery-images/albums/2.jpg'%}" alt="gallery-post">
-                                    <div class="mask">
-                                        <div class="media-cell-desc">
-                                            <h3>Summertime Saddness</h3>
-                                            <h4>8 May 2014</h4>
-                                        </div>
-                                    </div>
-                                    <a href="gallery-single.html"></a>
-                                </div>
-                                
-                              </div>
-                              <!-- gallery-item -->
-                              
-                               <!-- gallery-item -->  
-                              <div class="media-cell hentry">
-                                
-                                <div class="media-box">
-                                    <img src="{% static 'images/gallery-images/albums/3.jpg'%}" alt="gallery-post">
-                                    <div class="mask">
-                                        <div class="media-cell-desc">
-                                            <h3>Summertime Saddness</h3>
-                                            <h4>22 April 2014</h4>
-                                        </div>
-                                    </div>
-                                    <a href="gallery-single.html"></a>
-                                </div>
-                                
-                              </div>
-                              <!-- gallery-item -->
-                              
-                               <!-- gallery-item -->  
-                              <div class="media-cell hentry">
-                                
-                                <div class="media-box">
-                                    <img src="{% static 'images/gallery-images/albums/4.jpg'%}" alt="gallery-post">
-                                    <div class="mask">
-                                        <div class="media-cell-desc">
-                                            <h3>Summertime Saddness</h3>
-                                            <h4>3 May 2014</h4>
-                                        </div>
-                                    </div>
-                                    <a href="gallery-single.html"></a>
-                                </div>
-                                
-                              </div>
-                              <!-- gallery-item -->
-                              
-                               <!-- gallery-item -->  
-                              <div class="media-cell hentry">
-                                
-                                <div class="media-box">
-                                    <img src="{% static 'images/gallery-images/albums/5.jpg'%}" alt="gallery-post">
-                                    <div class="mask">
-                                        <div class="media-cell-desc">
-                                            <h3>Summertime Saddness</h3>
-                                            <h4>17 July 2014</h4>
-                                        </div>
-                                    </div>
-                                    <a href="gallery-single.html"></a>
-                                </div>
-                                
-                              </div>
-                              <!-- gallery-item -->
-                              
-                               <!-- gallery-item -->  
-                              <div class="media-cell hentry">
-                                
-                                <div class="media-box">
-                                    <img src="{% static 'images/gallery-images/albums/6.jpg'%}" alt="gallery-post">
-                                    <div class="mask">
-                                        <div class="media-cell-desc">
-                                            <h3>Summertime Saddness</h3>
-                                            <h4>17 July 2014</h4>
-                                        </div>
-                                    </div>
-                                    <a href="gallery-single.html"></a>
-                                </div>
-                                
-                              </div>
-                              <!-- gallery-item -->
-                              
-                               <!-- gallery-item -->  
-                              <div class="media-cell hentry">
-                                
-                                <div class="media-box">
-                                    <img src="{% static 'images/gallery-images/albums/7.jpg'%}" alt="gallery-post">
-                                    <div class="mask">
-                                        <div class="media-cell-desc">
-                                            <h3>Summertime Saddness</h3>
-                                            <h4>17 July 2014</h4>
-                                        </div>
-                                    </div>
-                                    <a href="gallery-single.html"></a>
-                                </div>
-                                
-                              </div>
-                              <!-- gallery-item -->
-                              
-                               <!-- gallery-item -->  
-                              <div class="media-cell hentry">
-                                
-                                <div class="media-box">
-                                    <img src="{% static 'images/gallery-images/albums/8.jpg'%}" alt="gallery-post">
-                                    <div class="mask">
-                                        <div class="media-cell-desc">
-                                            <h3>Summertime Saddness</h3>
-                                            <h4>17 July 2014</h4>
-                                        </div>
-                                    </div>
-                                    <a href="gallery-single.html"></a>
-                                </div>
-                                
-                              </div>
-                              <!-- gallery-item -->
-                              
-                               <!-- gallery-item -->  
-                              <div class="media-cell hentry">
-                                
-                                <div class="media-box">
-                                    <img src="{% static 'images/gallery-images/albums/9.jpg'%}" alt="gallery-post">
-                                    <div class="mask">
-                                        <div class="media-cell-desc">
-                                            <h3>Summertime Saddness</h3>
-                                            <h4>17 July 2014</h4>
-                                        </div>
-                                    </div>
-                                    <a href="gallery-single.html"></a>
-                                </div>
-                                
-                              </div>
-                              <!-- gallery-item -->
-                              
-                              
-                              
+                              {% endfor %}
                             </div>
-                            <!-- GALLERY -->
-                        
-                        
-                        </div>    
-						<!-- .media-grid-wrap -->
-                        
-                        
-                        
-					<!-- InstanceEndEditable -->
-                    	
-                        
-                    	
+                        </div>         	
                     </div>
-                    <!-- layout-medium -->
-                    
-                    
-                
-                
-                	
-                
                 </div>
-                <!-- site-content -->
-                
             </div>
-            <!-- primary -->    
-        
-        
-        
-        
         </div>
         <!-- site-main -->
         {% endblock content %}

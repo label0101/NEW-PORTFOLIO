@@ -56,10 +56,20 @@ class Comment(models.Model):
 
 # Gallery Books
 
+class GalleryCategory(models.Model):
+    name = models.CharField(max_length=50)
+    image = models.ImageField(upload_to='Images/gallery_category') 
+    created_date = models.DateTimeField(auto_now=True)
+
+    def __str__(self) -> str:
+        return f"{self.name}"
+
 class Gallery(models.Model):
     title = models.CharField(max_length=50)
     image = models.ImageField(upload_to='Images/gallery') 
     created_date = models.DateTimeField(auto_now=True)
+
+    category = models.ForeignKey(GalleryCategory,on_delete=models.CASCADE)
 
 
 class Book(models.Model):

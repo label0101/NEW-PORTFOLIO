@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Category, Contact,Portfolio,PortfolioCategory,Blog,Comment
+from .models import Category, Gallery,Portfolio,PortfolioCategory,Blog,Comment,GalleryCategory,Book
 from django.contrib import messages
 from django.http import HttpResponseRedirect
 from django.urls import reverse
@@ -39,8 +39,8 @@ def index_view(request):
 def about_view(request):
  return render(request,'about.html')
 
-def books_view(request):
- return render(request,'books.html')
+# def books_view(request):
+#  return render(request,'books.html')
 
 
 
@@ -55,10 +55,26 @@ class PortfolioListView(ListView):
         context["categories"] = PortfolioCategory.objects.all()
         return context
 
-def gallery_view(request):
- return render(request, 'gallery.html')
+# def gallery_view(request):
+#  return render(request, 'gallery.html')
 
+class GalleryListView(ListView):
+   model = GalleryCategory
+   context_object_name = 'gallery'
+   template_name = "gallery.html"
 
+class GalleryDetailView(DetailView):
+    model = GalleryCategory
+    template_name = "single-gallery.html"
+    context_object_name = "category"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        print(context)
+        context["gallery"] = Gallery.objects.filter(category=context.get('category'))
+
+        return context
+    
 # def blog_view(request):
 #  return render(request, 'blog.html')
 
@@ -84,3 +100,11 @@ class BlogDetailView(DetailView):
         context['comments_count'] = Comment.objects.filter(blog=context.get('blog')).count()
 
         return context
+
+
+def books_view(request):
+    books = Book.objects.all()
+    context = {
+        "books" : books,
+    }
+    return render(request, 'books.html',context)
