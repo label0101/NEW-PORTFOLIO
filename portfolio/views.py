@@ -83,6 +83,7 @@ class BlogListView(ListView):
     # paginate_by = 100  # if pagination is desired
     context_object_name = 'blogs'
     template_name = "blog.html"
+    paginate_by = 1
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -93,6 +94,7 @@ class BlogDetailView(DetailView):
     model = Blog
     template_name = "blog-single.html"
     context_object_name = "blog"
+    
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
