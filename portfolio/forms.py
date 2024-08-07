@@ -1,12 +1,19 @@
 #form Modelform
 from django.forms import ModelForm
 from django import forms
-from .models import Contact
+from .models import Contact, Comment
 
 # class ContactForm(forms.Form):
 #     name = forms.CharField(max_length=50)
 #     email = forms.EmailField(max_length=50)
 #     content = forms.TextInput()
+
+class CommentForm(ModelForm):
+    class Meta:
+        model = Comment
+        
+        fields = ['full_name','email','message']
+
 
 class ContactForm(ModelForm):
     class Meta:
