@@ -80,7 +80,7 @@
                                     <div class="entry-meta">
                                         <span class="entry-date">
                                             <time class="entry-date" >{{blog.created_date}}</time>
-                                            <a href="{% url 'blog-single-page' blog.pk %}#comments">124 Comments</a>
+                                            <a href="{% url 'blog-single-page' blog.pk %}">124 Comments</a>
                                         </span> 
                                     
                                         <span class="cat-links">
@@ -96,7 +96,6 @@
                                 <!-- .entry-content -->
                                 <div class="entry-content">
                                                                     
-                                	<p>{{blog.content| safe | truncatewords:20}} </p>
                                     <span >
                                         <a href="{% url 'blog-single-page' blog.pk %}" class="more-link">Continue reading <span class="meta-nav">→</span></a>
                                     </span>

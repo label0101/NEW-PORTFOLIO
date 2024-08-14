@@ -80,7 +80,7 @@ class BlogListView(ListView):
     model = Blog
     context_object_name = 'blogs'
     template_name = "blog.html"
-    paginate_by = 1
+    paginate_by = 5
 
     def get_queryset(self):
         return Blog.objects.order_by('-created_date')

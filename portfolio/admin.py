@@ -37,7 +37,7 @@ class GalleryAdmin(admin.ModelAdmin):
 
 @admin.register(Book)
 class BooksAdmin(admin.ModelAdmin):
-    list_display = ('img','title','author','description','description','pages','publication_date','publisher')
+    list_display = ('img','title','author','description','pages','publication_date','publisher')
     readonly_fields = ['id']
     def img(self, obj):
          return format_html('<img width="100" height="100" src="{}" />'.format(obj.cover.url))
